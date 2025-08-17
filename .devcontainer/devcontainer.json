@@ -1,0 +1,11 @@
+{
+  "name": "PostgreSQL + pgAdmin",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "postgres",
+  "workspaceFolder": "/home/",
+  "forwardPorts": [5432, 5050],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "apt-get update && apt-get install -y postgresql-client"
+}
