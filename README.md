@@ -1,10 +1,98 @@
 # PostgreSQL Tips & Tricks
 
-Quelques trucs et astuces sur PostgreSQL ...
-
 [![forthebadge](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](http://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
+Quelques trucs et astuces sur PostgreSQL.
+
+Ce projet propose un environnement de développement prêt à l'emploi avec :
+
+- PostgreSQL 15
+- pgAdmin 4 (interface web)
+- Initialisation automatique de la base avec des fichiers `.sql` et `.csv`
+- Compatible avec Visual Studio Code et Remote Containers
+
+---
+
 ![PostgreSQL](./images/postgresql-logo-256.png)
+
+---
+
+## 🚀 Prérequis
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- Extension **Remote - Containers** ou **Dev Containers**
+
+## ⚙️ Démarrage rapide
+
+1. **Ouvrir le dossier dans VS Code**
+2. Cliquer sur `Reopen in Container` (via la palette de commande `Ctrl+Shift+P`)
+3. Attends la création et le démarrage des containers
+
+---
+
+## 🌐 Accès pgAdmin
+
+- URL : [http://localhost:5050](http://localhost:5050)
+- Email : `admin@admin.com`
+- Mot de passe : `admin`
+
+💡 Une fois connecté, ajoute une connexion manuellement avec :
+
+- Host : `postgres`
+- Port : `5432`
+- User : `dev`
+- Password : `devpass`
+
+---
+
+## 🧩 Initialisation automatique
+
+À la première exécution, PostgreSQL initialise :
+
+- les **tables**
+- les **données depuis les fichiers CSV**
+
+via les scripts contenus dans le dossier `init/`.
+
+Pour réinitialiser la base :
+
+```bash
+docker volume rm devcontainer_pgdata
+```
+---
+
+## 📄 Fichiers importants
+
+- init/init.sql : création des tables et chargement des CSV
+- init/*.csv : données importées automatiquement
+- .devcontainer/docker-compose.yml : configuration des services
+- .devcontainer/devcontainer.json : config VS Code
+
+---
+
+## 🏗️ Structure du projet
+
+```bash
+.
+├── .devcontainer/
+│ ├── devcontainer.json
+│ ├── docker-compose.yml
+│ └── pgadmin_servers.json
+├── init/
+│ ├── init.sql
+│ └── *.csv
+├── scripts/
+│ ├── audit/
+│ │ └── *.sql
+│ ├── performance-related-issues/
+│ │ └── *.sql
+│ ├── security/
+│ │ └── *.sql
+│ └── size-related-issues/
+│   └── *.sql
+└── README.md
+```
 
 ### Scripts utiles
 
